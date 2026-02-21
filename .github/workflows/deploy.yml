@@ -47,7 +47,8 @@ jobs:
           script: |
             cd ~/DevOps-Assignment-Task
             export IMAGE_TAG=${{ github.sha }}
-
+            echo "IMAGE_TAG=$IMAGE_TAG"
+            
             docker stack deploy \
               -c stack.yml \
               multi \
