@@ -17,10 +17,12 @@ jobs:
 
       - name: Build Image
         #run: docker build -t ${{ secrets.DOCKER_USERNAME }}/client-a:${{ github.sha }} .
-        run: docker build -t gokarni/client-a-node-app:${{ steps.vars.outputs.SHA }} ./devops-sample-nest
+        run: |
+          docker build -t gokarni/client-a-node-app:${{ steps.vars.outputs.SHA }} ./devops-sample-nest
 
       - name: Push Image
-        run: docker push gokarni/client-a-node-app:${{ steps.vars.outputs.SHA }}
+        run: |
+          docker push gokarni/client-a-node-app:${{ steps.vars.outputs.SHA }}
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
