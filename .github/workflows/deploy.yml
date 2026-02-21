@@ -38,6 +38,7 @@ jobs:
           docker push gokarni/client-b-python-app:${{ github.sha }}
 
       # 6️⃣ Deploy Stack via SSH
+      # upddated the code
       - name: Deploy Stack
         uses: appleboy/ssh-action@v1
         with:
