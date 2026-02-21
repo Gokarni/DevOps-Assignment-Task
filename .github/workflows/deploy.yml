@@ -53,4 +53,3 @@ jobs:
               --with-registry-auth
 
             docker stack services multi
-            
