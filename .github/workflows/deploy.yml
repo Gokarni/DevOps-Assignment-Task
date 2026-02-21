@@ -45,6 +45,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            cd ~/DevOps-Assignment-Task
             export IMAGE_TAG=${{ github.sha }}
 
             docker stack deploy \
