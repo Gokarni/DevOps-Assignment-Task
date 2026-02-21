@@ -46,7 +46,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd ~/DevOps-Assignment-Task
-            echo "IMAGE_TAG=${GITHUB_SHA}" > .env
+            sed -i "s/\${IMAGE_TAG}/${GITHUB_SHA}/g" stack.yml
             
             
             docker stack deploy \
