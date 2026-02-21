@@ -39,5 +39,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             docker service update \
-            --image ${{ secrets.DOCKER_USERNAME }}/client-a:${{ github.sha }} \
-            multi_client-a
+              --image gokarni/client-a-node-app:${{ steps.vars.outputs.SHA }} \
+              --with-registry-auth \
+              multi_client-a
