@@ -51,6 +51,6 @@ jobs:
             cat .env
             
             
-            docker stack deploy -c stack.yml multi -with-registry-auth
+            docker stack deploy -c stack.yml multi --with-registry-auth
 
             docker stack services multi
