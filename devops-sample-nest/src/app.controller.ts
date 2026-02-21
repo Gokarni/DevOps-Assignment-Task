@@ -16,8 +16,8 @@ export class AppController {
   @Get('hello')
   sayHello() {
     return {
-      message: 'Hello from NestJS'
-      hostname: os.hostname(),
+      message: 'Hello from NestJS',
+      hostname: os.hostname()
     };
   }
 
