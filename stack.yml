@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   client-a:
-    image: gokarni/client-a-node-app:${TAG}
+    image: gokarni/client-a-node-app:${IMAGE_TAG}
     networks:
       - app-network
     secrets:
@@ -27,7 +27,7 @@ services:
         - "traefik.http.services.client-a.loadbalancer.server.port=3000"
 
   client-b:
-    image: gokarni/client-b-python-app:${TAG}
+    image: gokarni/client-b-python-app:${IMAGE_TAG}
     networks:
       - app-network
     secrets:
