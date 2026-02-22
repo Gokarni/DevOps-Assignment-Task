@@ -52,6 +52,7 @@ services:
     networks:
       - app-network
     command:
+      - "--api.dashboard=true"
       - "--providers.swarm=true"
       - "--providers.swarm.exposedbydefault=false"
       - "--providers.swarm.network=app-network"
