@@ -64,6 +64,9 @@ jobs:
             echo "Using IMAGE_TAG=$IMAGE_TAG"
 
             export IMAGE_TAG
+            # ✅ Create overlay network if not exists
+            docker network ls --format '{{.Name}}' | grep -w app-network || \
+            docker network create --driver overlay app-network
                     
             docker stack deploy --with-registry-auth -c stack.yml multi 
 
