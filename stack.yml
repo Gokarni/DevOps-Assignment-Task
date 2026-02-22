@@ -53,7 +53,7 @@ services:
       - app-network
     command:
       - "--api.dashboard=true"
-      - "--providers.swarm=true"
+      - "--providers.swarm.endpoint=unix:///var/run/docker.sock"
       - "--providers.swarm.exposedbydefault=false"
       - "--providers.swarm.network=app-network"
       - "--entrypoints.web.address=:80"
@@ -61,7 +61,9 @@ services:
       - "80:80"
     volumes:
       - traefik_cert:/letsencrypt
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DOCKER_API_VERSION=1.53
     deploy:
       placement:
         constraints:
