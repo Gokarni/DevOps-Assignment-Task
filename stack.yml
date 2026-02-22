@@ -48,7 +48,7 @@ services:
         - "traefik.http.services.client-b.loadbalancer.server.port=8000"
 
   traefik:
-    image: traefik:v2.10
+    image: traefik:v3.0
     networks:
       - app-network
     command:
@@ -58,6 +58,7 @@ services:
       - "--providers.docker.network=app-network"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
+      - "--providers.docker.endpoint=unix:///var/run/docker.sock"
       - "--certificatesresolvers.le.acme.tlschallenge=true"
       - "--certificatesresolvers.le.acme.email=admin@example.com"
       - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
