@@ -78,7 +78,7 @@ jobs:
 
             # ✅ Create node_env config if not exists
             docker config inspect node_env >/dev/null 2>&1 || \
-            docker config create node_env ./node_env.txt
+            echo "NODE_ENV=production" | docker config create node_env -
                     
             docker stack deploy --with-registry-auth -c stack.yml multi 
 
