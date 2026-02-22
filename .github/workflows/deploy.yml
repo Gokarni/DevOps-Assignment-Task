@@ -67,6 +67,14 @@ jobs:
             # ✅ Create overlay network if not exists
             docker network ls --format '{{.Name}}' | grep -w app-network || \
             docker network create --driver overlay app-network
+
+            # Create client_a_db secret if not exists
+            docker secret inspect client_a_db >/dev/null 2>&1 || \
+            echo "${{ secrets.CLIENT_A_DB_PASSWORD }}" | docker secret create client_a_db -
+
+            # Create client_b_db secret if not exists
+            docker secret inspect client_b_db >/dev/null 2>&1 || \
+            echo "${{ secrets.CLIENT_B_DB_PASSWORD }}" | docker secret create client_b_db -
                     
             docker stack deploy --with-registry-auth -c stack.yml multi 
 
