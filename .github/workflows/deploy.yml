@@ -53,11 +53,12 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/DevOps-Assignment-Task
-            echo "Using Image Tag: $IMAGE_TAG"
-            cat .env
-            
-            
+            rm -rf DevOps-Assignment-Task
+
+            git clone https://github.com/Gokarni/DevOps-Assignment-Task.git
+
+            cd DevOps-Assignment-Task
+                    
             docker stack deploy --with-registry-auth -c stack.yml multi 
 
             docker stack services multi
