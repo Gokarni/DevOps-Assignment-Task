@@ -58,9 +58,12 @@ jobs:
             git clone https://github.com/Gokarni/DevOps-Assignment-Task.git
 
             cd DevOps-Assignment-Task
-            echo "IMAGE_TAG=$IMAGE_TAG" > .env
+            IMAGE_TAG=${{ github.sha }}
+            IMAGE_TAG=${IMAGE_TAG::7}
 
-            cat .env
+            echo "Using IMAGE_TAG=$IMAGE_TAG"
+
+            export IMAGE_TAG
                     
             docker stack deploy --with-registry-auth -c stack.yml multi 
 
