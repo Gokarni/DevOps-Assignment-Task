@@ -75,6 +75,10 @@ jobs:
             # Create client_b_db secret if not exists
             docker secret inspect client_b_db >/dev/null 2>&1 || \
             echo "${{ secrets.CLIENT_B_DB_PASSWORD }}" | docker secret create client_b_db -
+
+            # ✅ Create node_env config if not exists
+            docker config inspect node_env >/dev/null 2>&1 || \
+            docker config create node_env ./node_env.txt
                     
             docker stack deploy --with-registry-auth -c stack.yml multi 
 
