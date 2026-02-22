@@ -57,10 +57,8 @@ services:
       - "--providers.swarm.exposedbydefault=false"
       - "--providers.swarm.network=app-network"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
     ports:
       - "80:80"
-      - "443:443"
     volumes:
       - traefik_cert:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
